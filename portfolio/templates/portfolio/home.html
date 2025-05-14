@@ -1,17 +1,18 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <!-- Hero Section with Particle Background -->
-<section class="hero-section vh-100 d-flex align-items-center position-relative overflow-hidden">
+<section
+  class="hero-section vh-100 d-flex align-items-center position-relative overflow-hidden"
+>
   <div class="particles-js" id="particles-js"></div>
   <div class="container position-relative z-index-1 text-center py-5">
     <div class="hero-content animate__animated animate__fadeIn">
-      <img src="{% static 'images/avatar.png' %}" 
-           alt="Allan James" 
-           class="img-fluid rounded-circle border border-4 border-info mb-4 shadow-lg"
-           width="220"
-           style="box-shadow: 0 0 25px rgba(23, 162, 184, 0.6);">
+      <img
+        src="{% static 'images/avatar.png' %}"
+        alt="Allan James"
+        class="img-fluid rounded-circle border border-4 border-info mb-4 shadow-lg"
+        width="220"
+        style="box-shadow: 0 0 25px rgba(23, 162, 184, 0.6)"
+      />
       <h1 class="display-3 fw-bold mb-3 text-white">
         Hi, I'm <span class="text-info gradient-text">Allan James</span>
       </h1>
@@ -19,7 +20,10 @@
         <p class="lead mb-0 typewriter-text text-light fs-2"></p>
       </div>
       <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <a href="#projects" class="btn btn-info btn-lg px-4 shadow-sm animate__animated animate__pulse animate__infinite animate__slower">
+        <a
+          href="#projects"
+          class="btn btn-info btn-lg px-4 shadow-sm animate__animated animate__pulse animate__infinite animate__slower"
+        >
           <i class="fas fa-code me-2"></i> View My Work
         </a>
         <a href="{% url 'contact' %}" class="btn btn-outline-light btn-lg px-4">
@@ -27,7 +31,10 @@
         </a>
       </div>
     </div>
-    <a href="#about" class="scroll-down-arrow text-white mt-5 d-inline-block animate__animated animate__bounce animate__infinite">
+    <a
+      href="#about"
+      class="scroll-down-arrow text-white mt-5 d-inline-block animate__animated animate__bounce animate__infinite"
+    >
       <i class="fas fa-chevron-down fa-2x"></i>
     </a>
   </div>
@@ -38,85 +45,136 @@
   <div class="container">
     <div class="section-header text-center mb-6">
       <span class="section-subtitle text-info">Get To Know Me</span>
-      <h2 class="section-title display-4 fw-bold text-white">About <span class="text-info">Me</span></h2>
+      <h2 class="section-title display-4 fw-bold text-white">
+        About <span class="text-info">Me</span>
+      </h2>
       <div class="divider mx-auto bg-info"></div>
     </div>
-    
+
     <div class="row g-5 align-items-center">
       <div class="col-lg-6">
         <div class="about-content pe-lg-4">
           <h3 class="text-info mb-4">Who am I?</h3>
-          <p class="fs-5 text-light mb-4">I'm Allan James, a passionate software developer and final-year physics student at Kyambogo University. My unique combination of technical skills and scientific thinking allows me to approach problems from multiple perspectives.</p>
-          
+          <p class="fs-5 text-light mb-4">
+            I'm Allan James, a passionate software developer and final-year
+            physics student at Kyambogo University. My unique combination of
+            technical skills and scientific thinking allows me to approach
+            problems from multiple perspectives.
+          </p>
+
           <div class="about-highlights mb-4">
             <div class="highlight-item d-flex mb-3">
-              <div class="icon-box bg-info bg-opacity-10 text-info rounded-circle me-3 flex-shrink-0">
+              <div
+                class="icon-box bg-info bg-opacity-10 text-info rounded-circle me-3 flex-shrink-0"
+              >
                 <i class="fas fa-atom"></i>
               </div>
               <div>
                 <h5 class="text-white mb-1">Physics Background</h5>
-                <p class="text-light mb-0">Strong foundation in analytical thinking and problem-solving from my physics studies.</p>
+                <p class="text-light mb-0">
+                  Strong foundation in analytical thinking and problem-solving
+                  from my physics studies.
+                </p>
               </div>
             </div>
-            
+
             <div class="highlight-item d-flex mb-3">
-              <div class="icon-box bg-info bg-opacity-10 text-info rounded-circle me-3 flex-shrink-0">
+              <div
+                class="icon-box bg-info bg-opacity-10 text-info rounded-circle me-3 flex-shrink-0"
+              >
                 <i class="fas fa-laptop-code"></i>
               </div>
               <div>
                 <h5 class="text-white mb-1">Software Development</h5>
-                <p class="text-light mb-0">Practical experience building web applications and solving real-world problems with code.</p>
+                <p class="text-light mb-0">
+                  Practical experience building web applications and solving
+                  real-world problems with code.
+                </p>
               </div>
             </div>
           </div>
-          
-          <a href="{% static 'documents/Resume.pdf' %}" class="btn btn-outline-info btn-lg mt-2" download>
+
+          <a
+            href="{% static 'documents/Resume.pdf' %}"
+            class="btn btn-outline-info btn-lg mt-2"
+            download
+          >
             <i class="fas fa-download me-2"></i> Download CV
           </a>
         </div>
       </div>
-      
+
       <div class="col-lg-6">
-        <div class="skills-card bg-dark-3 p-4 p-lg-5 rounded-4 border border-info border-opacity-25 shadow">
+        <div
+          class="skills-card bg-dark-3 p-4 p-lg-5 rounded-4 border border-info border-opacity-25 shadow"
+        >
           <h3 class="text-info mb-4">My Skills</h3>
-          
+
           <div class="skill-progress mb-4">
             <div class="d-flex justify-content-between mb-2">
               <span class="text-white">Python/Django</span>
               <span class="text-info">90%</span>
             </div>
             <div class="progress bg-dark">
-              <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+              <div
+                class="progress-bar bg-info"
+                role="progressbar"
+                style="width: 90%"
+                aria-valuenow="90"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
             </div>
           </div>
-          
+
           <div class="skill-progress mb-4">
             <div class="d-flex justify-content-between mb-2">
               <span class="text-white">JavaScript/React</span>
               <span class="text-info">75%</span>
             </div>
             <div class="progress bg-dark">
-              <div class="progress-bar bg-info" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              <div
+                class="progress-bar bg-info"
+                role="progressbar"
+                style="width: 75%"
+                aria-valuenow="75"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
             </div>
           </div>
-          
+
           <div class="skill-progress mb-4">
             <div class="d-flex justify-content-between mb-2">
               <span class="text-white">Database Design</span>
               <span class="text-info">85%</span>
             </div>
             <div class="progress bg-dark">
-              <div class="progress-bar bg-info" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+              <div
+                class="progress-bar bg-info"
+                role="progressbar"
+                style="width: 85%"
+                aria-valuenow="85"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
             </div>
           </div>
-          
+
           <div class="skill-progress mb-4">
             <div class="d-flex justify-content-between mb-2">
               <span class="text-white">UI/UX Design</span>
               <span class="text-info">70%</span>
             </div>
             <div class="progress bg-dark">
-              <div class="progress-bar bg-info" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+              <div
+                class="progress-bar bg-info"
+                role="progressbar"
+                style="width: 70%"
+                aria-valuenow="70"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
             </div>
           </div>
         </div>
@@ -130,52 +188,92 @@
   <div class="container">
     <div class="section-header text-center mb-6">
       <span class="section-subtitle text-info">What I Offer</span>
-      <h2 class="section-title display-4 fw-bold text-white">My <span class="text-info">Services</span></h2>
+      <h2 class="section-title display-4 fw-bold text-white">
+        My <span class="text-info">Services</span>
+      </h2>
       <div class="divider mx-auto bg-info"></div>
     </div>
-    
+
     <div class="row g-4">
       <div class="col-md-6 col-lg-4">
-        <div class="service-card bg-dark-2 p-4 rounded-4 h-100 border-top border-4 border-info">
-          <div class="icon-box bg-info bg-opacity-10 text-info rounded-circle mb-4">
+        <div
+          class="service-card bg-dark-2 p-4 rounded-4 h-100 border-top border-4 border-info"
+        >
+          <div
+            class="icon-box bg-info bg-opacity-10 text-info rounded-circle mb-4"
+          >
             <i class="fas fa-code fa-2x"></i>
           </div>
           <h3 class="text-white mb-3">Web Development</h3>
-          <p class="text-light">Custom web applications built with Django, React, and modern frameworks tailored to your specific needs.</p>
+          <p class="text-light">
+            Custom web applications built with Django, React, and modern
+            frameworks tailored to your specific needs.
+          </p>
           <ul class="service-list text-light">
-            <li><i class="fas fa-check text-info me-2"></i> Full-stack development</li>
+            <li>
+              <i class="fas fa-check text-info me-2"></i> Full-stack development
+            </li>
             <li><i class="fas fa-check text-info me-2"></i> REST API design</li>
-            <li><i class="fas fa-check text-info me-2"></i> Database architecture</li>
+            <li>
+              <i class="fas fa-check text-info me-2"></i> Database architecture
+            </li>
           </ul>
         </div>
       </div>
-      
+
       <div class="col-md-6 col-lg-4">
-        <div class="service-card bg-dark-2 p-4 rounded-4 h-100 border-top border-4 border-info">
-          <div class="icon-box bg-info bg-opacity-10 text-info rounded-circle mb-4">
+        <div
+          class="service-card bg-dark-2 p-4 rounded-4 h-100 border-top border-4 border-info"
+        >
+          <div
+            class="icon-box bg-info bg-opacity-10 text-info rounded-circle mb-4"
+          >
             <i class="fas fa-mobile-alt fa-2x"></i>
           </div>
           <h3 class="text-white mb-3">Responsive Design</h3>
-          <p class="text-light">Beautiful, mobile-friendly interfaces that work perfectly on any device.</p>
+          <p class="text-light">
+            Beautiful, mobile-friendly interfaces that work perfectly on any
+            device.
+          </p>
           <ul class="service-list text-light">
-            <li><i class="fas fa-check text-info me-2"></i> Mobile-first approach</li>
-            <li><i class="fas fa-check text-info me-2"></i> Cross-browser compatibility</li>
-            <li><i class="fas fa-check text-info me-2"></i> Performance optimization</li>
+            <li>
+              <i class="fas fa-check text-info me-2"></i> Mobile-first approach
+            </li>
+            <li>
+              <i class="fas fa-check text-info me-2"></i> Cross-browser
+              compatibility
+            </li>
+            <li>
+              <i class="fas fa-check text-info me-2"></i> Performance
+              optimization
+            </li>
           </ul>
         </div>
       </div>
-      
+
       <div class="col-md-6 col-lg-4">
-        <div class="service-card bg-dark-2 p-4 rounded-4 h-100 border-top border-4 border-info">
-          <div class="icon-box bg-info bg-opacity-10 text-info rounded-circle mb-4">
+        <div
+          class="service-card bg-dark-2 p-4 rounded-4 h-100 border-top border-4 border-info"
+        >
+          <div
+            class="icon-box bg-info bg-opacity-10 text-info rounded-circle mb-4"
+          >
             <i class="fas fa-chart-line fa-2x"></i>
           </div>
           <h3 class="text-white mb-3">Data Analysis</h3>
-          <p class="text-light">Leveraging my physics background to extract insights from your data.</p>
+          <p class="text-light">
+            Leveraging my physics background to extract insights from your data.
+          </p>
           <ul class="service-list text-light">
-            <li><i class="fas fa-check text-info me-2"></i> Scientific computing</li>
-            <li><i class="fas fa-check text-info me-2"></i> Data visualization</li>
-            <li><i class="fas fa-check text-info me-2"></i> Statistical modeling</li>
+            <li>
+              <i class="fas fa-check text-info me-2"></i> Scientific computing
+            </li>
+            <li>
+              <i class="fas fa-check text-info me-2"></i> Data visualization
+            </li>
+            <li>
+              <i class="fas fa-check text-info me-2"></i> Statistical modeling
+            </li>
           </ul>
         </div>
       </div>
@@ -188,22 +286,39 @@
   <div class="container">
     <div class="section-header text-center mb-6">
       <span class="section-subtitle text-info">My Work</span>
-      <h2 class="section-title display-4 fw-bold text-white">Featured <span class="text-info">Projects</span></h2>
+      <h2 class="section-title display-4 fw-bold text-white">
+        Featured <span class="text-info">Projects</span>
+      </h2>
       <div class="divider mx-auto bg-info"></div>
     </div>
-    
+
     <div class="row g-4">
       {% for project in projects %}
       <div class="col-md-6 col-lg-4">
-        <div class="project-card bg-dark-3 rounded-4 overflow-hidden h-100 transition-all hover-shadow">
+        <div
+          class="project-card bg-dark-3 rounded-4 overflow-hidden h-100 transition-all hover-shadow"
+        >
           <div class="project-image position-relative overflow-hidden">
-            <img src="{{ project.image.url }}" class="img-fluid w-100" alt="{{ project.title }}">
-            <div class="project-overlay d-flex align-items-center justify-content-center">
-              <a href="{% url 'project_detail' project.id %}" class="btn btn-info btn-sm rounded-pill px-3 me-2">
+            <img
+              src="{{ project.image.url }}"
+              class="img-fluid w-100"
+              alt="{{ project.title }}"
+            />
+            <div
+              class="project-overlay d-flex align-items-center justify-content-center"
+            >
+              <a
+                href="{% url 'project_detail' project.id %}"
+                class="btn btn-info btn-sm rounded-pill px-3 me-2"
+              >
                 <i class="fas fa-eye me-1"></i> View
               </a>
               {% if project.live_link %}
-              <a href="{{ project.live_link }}" class="btn btn-outline-light btn-sm rounded-pill px-3" target="_blank">
+              <a
+                href="{{ project.live_link }}"
+                class="btn btn-outline-light btn-sm rounded-pill px-3"
+                target="_blank"
+              >
                 <i class="fas fa-external-link-alt me-1"></i> Live
               </a>
               {% endif %}
@@ -212,14 +327,24 @@
           <div class="project-content p-4">
             <div class="d-flex justify-content-between align-items-center mb-3">
               <h3 class="text-white mb-0">{{ project.title }}</h3>
-              <a href="{{ project.github_link }}" class="text-info" target="_blank" title="View on GitHub">
+              <a
+                href="{{ project.github_link }}"
+                class="text-info"
+                target="_blank"
+                title="View on GitHub"
+              >
                 <i class="fab fa-github"></i>
               </a>
             </div>
-            <p class="text-light mb-3">{{ project.description|truncatewords:25 }}</p>
+            <p class="text-light mb-3">
+              {{ project.description|truncatewords:25 }}
+            </p>
             <div class="project-tech">
               {% for tech in project.technologies.split %}
-              <span class="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25 me-1 mb-1">{{ tech }}</span>
+              <span
+                class="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25 me-1 mb-1"
+                >{{ tech }}</span
+              >
               {% endfor %}
             </div>
           </div>
@@ -227,7 +352,7 @@
       </div>
       {% endfor %}
     </div>
-    
+
     <div class="text-center mt-5">
       <a href="{% url 'projects' %}" class="btn btn-info btn-lg px-4 shadow-sm">
         <i class="fas fa-code-branch me-2"></i> View All Projects
@@ -241,24 +366,27 @@
   <div class="container">
     <div class="section-header text-center mb-6">
       <span class="section-subtitle text-info">My Journey</span>
-      <h2 class="section-title display-4 fw-bold text-white">Experience & <span class="text-info">Education</span></h2>
+      <h2 class="section-title display-4 fw-bold text-white">
+        Experience & <span class="text-info">Education</span>
+      </h2>
       <div class="divider mx-auto bg-info"></div>
     </div>
-    
+
     <div class="row g-5">
       <div class="col-lg-6">
         <div class="timeline-wrapper">
           <h3 class="timeline-header text-white mb-5 ps-4">
             <i class="fas fa-briefcase text-info me-3"></i> Work Experience
           </h3>
-          
+
           <div class="timeline">
             {% for exp in experience %}
             <div class="timeline-item">
               <div class="timeline-badge bg-info"></div>
               <div class="timeline-content bg-dark-2 p-4 rounded-4">
                 <div class="timeline-date text-info mb-2">
-                  {{ exp.start_date|date:"M Y" }} - {% if exp.current %}Present{% else %}{{ exp.end_date|date:"M Y" }}{% endif %}
+                  {{ exp.start_date|date:"M Y" }} - {% if exp.current
+                  %}Present{% else %}{{ exp.end_date|date:"M Y" }}{% endif %}
                 </div>
                 <h4 class="text-white">{{ exp.position }}</h4>
                 <h5 class="text-light">{{ exp.company }}</h5>
@@ -269,24 +397,27 @@
           </div>
         </div>
       </div>
-      
+
       <div class="col-lg-6">
         <div class="timeline-wrapper">
           <h3 class="timeline-header text-white mb-5 ps-4">
             <i class="fas fa-graduation-cap text-info me-3"></i> Education
           </h3>
-          
+
           <div class="timeline">
             {% for edu in education %}
             <div class="timeline-item">
               <div class="timeline-badge bg-info"></div>
               <div class="timeline-content bg-dark-2 p-4 rounded-4">
                 <div class="timeline-date text-info mb-2">
-                  {{ edu.start_date|date:"M Y" }} - {{ edu.end_date|date:"M Y" }}
+                  {{ edu.start_date|date:"M Y" }} - {{ edu.end_date|date:"M Y"
+                  }}
                 </div>
                 <h4 class="text-white">{{ edu.degree }}</h4>
                 <h5 class="text-light">{{ edu.institution }}</h5>
-                <p class="text-light mb-1"><strong>Field:</strong> {{ edu.field_of_study }}</p>
+                <p class="text-light mb-1">
+                  <strong>Field:</strong> {{ edu.field_of_study }}
+                </p>
                 {% if edu.description %}
                 <p class="text-light mt-2">{{ edu.description }}</p>
                 {% endif %}
@@ -305,10 +436,12 @@
   <div class="container">
     <div class="section-header text-center mb-6">
       <span class="section-subtitle text-info">My Capabilities</span>
-      <h2 class="section-title display-4 fw-bold text-white">Technical <span class="text-info">Skills</span></h2>
+      <h2 class="section-title display-4 fw-bold text-white">
+        Technical <span class="text-info">Skills</span>
+      </h2>
       <div class="divider mx-auto bg-info"></div>
     </div>
-    
+
     <div class="row g-4">
       <div class="col-md-6">
         <div class="skill-category bg-dark-3 p-4 rounded-4 mb-4">
@@ -324,8 +457,14 @@
                   <span class="text-info">{{ skill.proficiency }}%</span>
                 </div>
                 <div class="progress bg-dark">
-                  <div class="progress-bar bg-info" role="progressbar" style="width: {{ skill.proficiency }}%" 
-                       aria-valuenow="{{ skill.proficiency }}" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div
+                    class="progress-bar bg-info"
+                    role="progressbar"
+                    style="width: {{ skill.proficiency }}%"
+                    aria-valuenow="{{ skill.proficiency }}"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
                 </div>
               </div>
             </div>
@@ -333,7 +472,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="col-md-6">
         <div class="skill-category bg-dark-3 p-4 rounded-4 mb-4">
           <h3 class="text-white mb-4 d-flex align-items-center">
@@ -348,8 +487,14 @@
                   <span class="text-info">{{ skill.proficiency }}%</span>
                 </div>
                 <div class="progress bg-dark">
-                  <div class="progress-bar bg-info" role="progressbar" style="width: {{ skill.proficiency }}%" 
-                       aria-valuenow="{{ skill.proficiency }}" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div
+                    class="progress-bar bg-info"
+                    role="progressbar"
+                    style="width: {{ skill.proficiency }}%"
+                    aria-valuenow="{{ skill.proficiency }}"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
                 </div>
               </div>
             </div>
@@ -357,7 +502,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="col-md-6">
         <div class="skill-category bg-dark-3 p-4 rounded-4">
           <h3 class="text-white mb-4 d-flex align-items-center">
@@ -372,8 +517,14 @@
                   <span class="text-info">{{ skill.proficiency }}%</span>
                 </div>
                 <div class="progress bg-dark">
-                  <div class="progress-bar bg-info" role="progressbar" style="width: {{ skill.proficiency }}%" 
-                       aria-valuenow="{{ skill.proficiency }}" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div
+                    class="progress-bar bg-info"
+                    role="progressbar"
+                    style="width: {{ skill.proficiency }}%"
+                    aria-valuenow="{{ skill.proficiency }}"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
                 </div>
               </div>
             </div>
@@ -381,7 +532,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="col-md-6">
         <div class="skill-category bg-dark-3 p-4 rounded-4">
           <h3 class="text-white mb-4 d-flex align-items-center">
@@ -396,8 +547,14 @@
                   <span class="text-info">{{ skill.proficiency }}%</span>
                 </div>
                 <div class="progress bg-dark">
-                  <div class="progress-bar bg-info" role="progressbar" style="width: {{ skill.proficiency }}%" 
-                       aria-valuenow="{{ skill.proficiency }}" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div
+                    class="progress-bar bg-info"
+                    role="progressbar"
+                    style="width: {{ skill.proficiency }}%"
+                    aria-valuenow="{{ skill.proficiency }}"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
                 </div>
               </div>
             </div>
@@ -414,10 +571,12 @@
   <div class="container">
     <div class="section-header text-center mb-6">
       <span class="section-subtitle text-info">Client Feedback</span>
-      <h2 class="section-title display-4 fw-bold text-white">What People <span class="text-info">Say</span></h2>
+      <h2 class="section-title display-4 fw-bold text-white">
+        What People <span class="text-info">Say</span>
+      </h2>
       <div class="divider mx-auto bg-info"></div>
     </div>
-    
+
     <div class="row g-4">
       <div class="col-md-4">
         <div class="testimonial-card bg-dark-2 p-4 rounded-4 h-100">
@@ -428,9 +587,17 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
           </div>
-          <p class="text-light mb-4">"Allan delivered our project ahead of schedule with exceptional quality. His problem-solving skills are outstanding."</p>
+          <p class="text-light mb-4">
+            "Allan delivered our project ahead of schedule with exceptional
+            quality. His problem-solving skills are outstanding."
+          </p>
           <div class="client-info d-flex align-items-center">
-            <img src="{% static 'images/client1.jpg' %}" class="rounded-circle me-3" width="50" alt="Client">
+            <img
+              src="{% static 'images/client1.jpg' %}"
+              class="rounded-circle me-3"
+              width="50"
+              alt="Client"
+            />
             <div>
               <h5 class="text-white mb-0">Sarah Johnson</h5>
               <small class="text-info">CEO, TechSolutions</small>
@@ -438,7 +605,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="col-md-4">
         <div class="testimonial-card bg-dark-2 p-4 rounded-4 h-100">
           <div class="rating mb-3 text-warning">
@@ -448,9 +615,17 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
           </div>
-          <p class="text-light mb-4">"Working with Allan was a pleasure. He understood our requirements perfectly and implemented them flawlessly."</p>
+          <p class="text-light mb-4">
+            "Working with Allan was a pleasure. He understood our requirements
+            perfectly and implemented them flawlessly."
+          </p>
           <div class="client-info d-flex align-items-center">
-            <img src="{% static 'images/client2.jpg' %}" class="rounded-circle me-3" width="50" alt="Client">
+            <img
+              src="{% static 'images/client2.jpg' %}"
+              class="rounded-circle me-3"
+              width="50"
+              alt="Client"
+            />
             <div>
               <h5 class="text-white mb-0">Michael Brown</h5>
               <small class="text-info">CTO, InnovateApps</small>
@@ -458,7 +633,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="col-md-4">
         <div class="testimonial-card bg-dark-2 p-4 rounded-4 h-100">
           <div class="rating mb-3 text-warning">
@@ -468,9 +643,17 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
           </div>
-          <p class="text-light mb-4">"Allan's combination of technical skills and scientific thinking brought unique solutions to our complex problems."</p>
+          <p class="text-light mb-4">
+            "Allan's combination of technical skills and scientific thinking
+            brought unique solutions to our complex problems."
+          </p>
           <div class="client-info d-flex align-items-center">
-            <img src="{% static 'images/client3.jpg' %}" class="rounded-circle me-3" width="50" alt="Client">
+            <img
+              src="{% static 'images/client3.jpg' %}"
+              class="rounded-circle me-3"
+              width="50"
+              alt="Client"
+            />
             <div>
               <h5 class="text-white mb-0">David Wilson</h5>
               <small class="text-info">Director, DataSci Corp</small>
@@ -486,8 +669,13 @@
 <section class="py-6 bg-info position-relative overflow-hidden">
   <div class="cta-pattern"></div>
   <div class="container position-relative z-index-1 text-center py-4">
-    <h2 class="display-4 fw-bold mb-4 text-dark">Ready to Start Your Project?</h2>
-    <p class="lead mb-5 text-dark">I'm currently available for freelance work and open to new opportunities. Let's discuss how I can help bring your ideas to life.</p>
+    <h2 class="display-4 fw-bold mb-4 text-dark">
+      Ready to Start Your Project?
+    </h2>
+    <p class="lead mb-5 text-dark">
+      I'm currently available for freelance work and open to new opportunities.
+      Let's discuss how I can help bring your ideas to life.
+    </p>
     <div class="d-flex justify-content-center gap-3 flex-wrap">
       <a href="{% url 'contact' %}" class="btn btn-dark btn-lg px-4 shadow-sm">
         <i class="fas fa-paper-plane me-2"></i> Get In Touch
@@ -501,18 +689,18 @@
 
 <!-- Custom JS for animations -->
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener("DOMContentLoaded", function () {
     // Typewriter effect
     const typewriterTexts = [
       "Software Developer",
       "Physics Enthusiast",
       "Problem Solver",
       "Full Stack Engineer",
-      "Tech Innovator"
+      "Tech Innovator",
     ];
     let currentTextIndex = 0;
-    const typewriterElement = document.querySelector('.typewriter-text');
-    
+    const typewriterElement = document.querySelector(".typewriter-text");
+
     function typeWriter(text, i, cb) {
       if (i < text.length) {
         typewriterElement.innerHTML = text.substring(0, i + 1);
@@ -521,13 +709,13 @@
         setTimeout(cb, 1500);
       }
     }
-    
+
     function startTyping() {
       typeWriter(typewriterTexts[currentTextIndex], 0, () => {
         setTimeout(eraseText, 1500);
       });
     }
-    
+
     function eraseText() {
       let text = typewriterElement.innerHTML;
       if (text.length > 0) {
@@ -538,12 +726,15 @@
         startTyping();
       }
     }
-    
+
     startTyping();
-    
+
     // Initialize particles.js if available
-    if (typeof particlesJS !== 'undefined') {
-      particlesJS.load('particles-js', '{% static "js/particles-config.json" %}');
+    if (typeof particlesJS !== "undefined") {
+      particlesJS.load(
+        "particles-js",
+        '{% static "js/particles-config.json" %}'
+      );
     }
   });
 </script>
