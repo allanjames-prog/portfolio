@@ -9,9 +9,19 @@ class ProjectAdmin(admin.ModelAdmin):
 
 @admin.register(Skill)
 class SkillAdmin(admin.ModelAdmin):
-    list_display = ('name', 'proficiency', 'category')
+    list_display = ('name', 'category', 'proficiency', 'display_order')
     list_filter = ('category',)
     search_fields = ('name',)
+    list_editable = ('display_order', 'proficiency')
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'proficiency', 'category', 'display_order')
+        }),
+        ('Advanced', {
+            'fields': ('icon_class',),
+            'classes': ('collapse',)
+        }),
+    )
 
 @admin.register(Education)
 class EducationAdmin(admin.ModelAdmin):

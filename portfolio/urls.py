@@ -4,6 +4,7 @@ from .views import (
     project_detail,
     all_projects,
     contact,
+    skills_view,
 )
 
 urlpatterns = [
@@ -11,4 +12,5 @@ urlpatterns = [
     path('projects/', all_projects, name='projects'),
     path('projects/<int:pk>/', project_detail, name='project_detail'),
     path('contact/', contact, name='contact'),
+    path('skills/', skills_view, name='skills'),
 ]

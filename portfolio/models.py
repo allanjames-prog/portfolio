@@ -15,14 +15,39 @@ class Project(models.Model):
     def __str__(self):
         return self.title
 
+
 class Skill(models.Model):
+    CATEGORY_CHOICES = [
+        ('PROGRAMMING', 'Programming Languages'),
+        ('WEB', 'Web Development'),
+        ('DATABASE', 'Databases'),
+        ('TOOLS', 'Tools & DevOps'),
+        ('OTHER', 'Other Skills'),
+    ]
+    
     name = models.CharField(max_length=100)
-    proficiency = models.IntegerField(default=50)  # 0-100 scale
-    category = models.CharField(max_length=50)  # e.g., "Programming", "Design"
-    icon_class = models.CharField(max_length=50)  # FontAwesome class
+    proficiency = models.IntegerField(default=50, help_text="0-100 percentage")
+    category = models.CharField(
+        max_length=50,
+        choices=CATEGORY_CHOICES,
+        default='PROGRAMMING'
+    )
+    icon_class = models.CharField(
+        max_length=50,
+        default='fas fa-code',
+        help_text="FontAwesome icon class (e.g., 'fas fa-code')"
+    )
+    display_order = models.PositiveSmallIntegerField(
+        default=0,
+        help_text="Higher numbers appear first"
+    )
+    
+    class Meta:
+        ordering = ['-display_order', 'name']
     
     def __str__(self):
-        return self.name
+        return f"{self.name} ({self.get_category_display()})"
+
 
 class Education(models.Model):
     institution = models.CharField(max_length=200)

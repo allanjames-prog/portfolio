@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from .models import Project, Skill, Education, Experience, ContactMessage
 from django.core.mail import send_mail
+from pprint import pprint
 
 def portfolio_home(request):
     projects = Project.objects.filter(featured=True)[:6]
@@ -53,3 +54,32 @@ def contact(request):
 
     return render(request, 'portfolio/contact.html')
 
+
+
+from django.shortcuts import render
+from portfolio.models import Skill
+
+def skills_view(request):
+    # Organize by category with proper mappings
+    categories = {
+        'Programming Languages': {
+            'icon': 'fas fa-code',
+            'skills': Skill.objects.filter(category='PROGRAMMING')  # Fixed typo
+        },
+        'Web Development': {
+            'icon': 'fas fa-laptop-code',
+            'skills': Skill.objects.filter(category='WEB')
+        },
+        'Databases & Tools': {
+            'icon': 'fas fa-database',
+            'skills': Skill.objects.filter(category='DATABASE') | Skill.objects.filter(category='TOOLS')
+        },
+        'Other Skills': {
+            'icon': 'fas fa-cogs',
+            'skills': Skill.objects.filter(category='OTHER')
+        }
+    }
+    
+    return render(request, 'portfolio/skills.html', {
+        'categories': categories
+    })
