@@ -1,0 +1,341 @@
+/* ================ Base Styles ================ */
+:root {
+  --bg-dark: #0a192f;
+  --bg-dark-2: #112240;
+  --bg-dark-3: #233554;
+  --text-light: #ccd6f6;
+  --text-lighter: #e6f1ff;
+  --accent-color: #64ffda;
+  --accent-color-dark: #52d3b3;
+  --primary-color: #0a192f;
+  --secondary-color: #495670;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+}
+
+/* ================ Typography ================ */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-lighter);
+}
+
+.display-1, .display-2, .display-3, .display-4 {
+  font-weight: 800;
+}
+
+.text-info {
+  color: var(--accent-color) !important;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #64ffda, #52d3b3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ================ Section Styles ================ */
+.section-header {
+  margin-bottom: 4rem;
+}
+
+.section-subtitle {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.section-title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 1rem;
+}
+
+.divider {
+  width: 80px;
+  height: 4px;
+  background: var(--accent-color);
+  margin-top: 1.5rem;
+}
+
+.py-6 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* ================ Hero Section ================ */
+.hero-section {
+  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-dark-2) 100%);
+  position: relative;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.scroll-down-arrow {
+  animation: bounce 2s infinite;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.scroll-down-arrow:hover {
+  opacity: 1;
+  transform: translateY(5px);
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-15px);
+  }
+  60% {
+    transform: translateY(-7px);
+  }
+}
+
+/* ================ About Section ================ */
+.about-content {
+  position: relative;
+  z-index: 1;
+}
+
+.highlight-item {
+  background: rgba(100, 255, 218, 0.05);
+  border-left: 2px solid var(--accent-color);
+  padding: 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.highlight-item:hover {
+  transform: translateX(5px);
+  background: rgba(100, 255, 218, 0.1);
+}
+
+.icon-box {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* ================ Cards ================ */
+.service-card, .project-card, .testimonial-card, .skill-category {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.service-card:hover, .project-card:hover, .testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(100, 255, 218, 0.1);
+  border-color: rgba(100, 255, 218, 0.3);
+}
+
+.project-card .project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 25, 47, 0.9);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+/* ================ Timeline ================ */
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: var(--accent-color);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.timeline-badge {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.timeline-date {
+  font-weight: 600;
+}
+
+.timeline-content {
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateX(5px);
+}
+
+/* ================ Progress Bars ================ */
+.progress {
+  height: 8px;
+  border-radius: 4px;
+}
+
+.progress-bar {
+  background-color: var(--accent-color);
+  border-radius: 4px;
+}
+
+/* ================ Buttons ================ */
+.btn-info {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--primary-color);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-info:hover {
+  background-color: transparent;
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.btn-outline-info {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+.btn-outline-info:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+/* ================ Animations ================ */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.hover-shadow {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 15px 30px rgba(100, 255, 218, 0.2);
+}
+
+/* ================ Particles ================ */
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* ================ Responsive Adjustments ================ */
+@media (max-width: 768px) {
+  .section-header {
+    margin-bottom: 3rem;
+  }
+  
+  .py-6 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #64ffda, #52d3b3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-icon {
+  background: linear-gradient(90deg, #64ffda, #52d3b3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Navbar Scroll Effect */
+.navbar-scrolled {
+  background-color: rgba(10, 25, 47, 0.95) !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+/* Social Icons */
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--text-light);
+  background: rgba(100, 255, 218, 0.1);
+  margin: 0 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  color: var(--accent-color);
+  background: rgba(100, 255, 218, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Nav Link Underline Animation */
+.nav-link-underline {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-color);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover .nav-link-underline {
+  width: 100%;
+}

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio of Allan James - Innovative Software Developer & Theoretical Physicist creating cutting-edge solutions"
+    />
+    <meta
+      name="keywords"
+      content="software developer, physicist, python, django, portfolio, full-stack developer, Uganda"
+    />
+    <meta name="author" content="Allan James" />
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Allan James | Portfolio" />
+    <meta
+      property="og:description"
+      content="Portfolio of Allan James - Software Developer & Physicist"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourdomain.com" />
+    <meta
+      property="og:image"
+      content="{% static 'images/social-preview.jpg' %}"
+    />
+    <meta property="og:site_name" content="Allan James Portfolio" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Allan James | Portfolio" />
+    <meta
+      name="twitter:description"
+      content="Portfolio of Allan James - Software Developer & Physicist"
+    />
+    <meta
+      name="twitter:image"
+      content="{% static 'images/social-preview.jpg' %}"
+    />
+
+    <title>
+      {% block title %}Allan James | Software Developer & Physicist{% endblock %}
+    </title>
+
+    <!-- Favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{% static 'images/apple-touch-icon.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'images/favicon-32x32.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'images/favicon-16x16.png' %}"
+    />
+    <link rel="manifest" href="{% static 'images/site.webmanifest' %}" />
+    <link
+      rel="mask-icon"
+      href="{% static 'images/safari-pinned-tab.svg' %}"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#2b5797" />
+    <meta name="theme-color" content="#0a192f" />
+
+    <!-- Preload Critical Resources -->
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+      as="style"
+    />
+    <link rel="preload" href="{% static 'css/styles.css' %}" as="style" />
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"
+      crossorigin="anonymous"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Animate.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+
+    {% block extra_css %}{% endblock %}
+  </head>
+
+  <body
+    class="d-flex flex-column min-vh-100 bg-dark text-light"
+    style="font-family: 'Poppins', sans-serif"
+  >
+    <!-- Navigation -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark py-3 sticky-top border-bottom border-secondary border-opacity-25"
+    >
+      <div class="container">
+        <a
+          class="navbar-brand fw-bold d-flex align-items-center"
+          href="{% url 'home' %}"
+        >
+          <span class="d-inline-block me-2 gradient-icon">👨‍💻</span>
+          <span class="gradient-text">Allan James</span>
+        </a>
+
+        <!-- Burger Menu Button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Items -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item mx-1">
+              <a
+                class="nav-link position-relative"
+                href="{% url 'home' %}#about"
+              >
+                <i class="fas fa-user me-1"></i> About
+                <span class="nav-link-underline"></span>
+              </a>
+            </li>
+            <li class="nav-item mx-1">
+              <a class="nav-link position-relative" href="{% url 'projects' %}">
+                <i class="fas fa-code me-1"></i> Projects
+                <span class="nav-link-underline"></span>
+              </a>
+            </li>
+            <li class="nav-item mx-1">
+              <a
+                class="nav-link position-relative"
+                href="{% url 'home' %}#skills"
+              >
+                <i class="fas fa-cogs me-1"></i> Skills
+                <span class="nav-link-underline"></span>
+              </a>
+            </li>
+            <li class="nav-item mx-1">
+              <a
+                class="nav-link position-relative"
+                href="{% url 'home' %}#experience"
+              >
+                <i class="fas fa-briefcase me-1"></i> Experience
+                <span class="nav-link-underline"></span>
+              </a>
+            </li>
+            <li class="nav-item mx-1">
+              <a class="nav-link position-relative" href="{% url 'contact' %}">
+                <i class="fas fa-envelope me-1"></i> Contact
+                <span class="nav-link-underline"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow-1">{% block content %}{% endblock %}</main>
+
+    <!-- Footer -->
+    <footer
+      class="bg-dark text-white py-5 mt-auto border-top border-secondary border-opacity-25"
+    >
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <div class="footer-logo mb-4">
+              <span class="gradient-text h3">Allan James</span>
+            </div>
+
+            <div class="social-links mb-4">
+              <a
+                href="https://github.com/allanjames-prog"
+                class="social-icon"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="GitHub"
+              >
+                <i class="fab fa-github fa-lg"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/allan-james-09963a249/"
+                class="social-icon"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="LinkedIn"
+              >
+                <i class="fab fa-linkedin-in fa-lg"></i>
+              </a>
+              <a
+                href="mailto:james21.khiisa@gmail.com"
+                class="social-icon"
+                aria-label="Email"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="Email"
+              >
+                <i class="fas fa-envelope fa-lg"></i>
+              </a>
+              <a
+                href="https://twitter.com/yourusername"
+                class="social-icon"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="Twitter"
+              >
+                <i class="fab fa-twitter fa-lg"></i>
+              </a>
+              <a
+                href="https://dev.to/yourusername"
+                class="social-icon"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Dev.to"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="Dev.to"
+              >
+                <i class="fab fa-dev fa-lg"></i>
+              </a>
+            </div>
+
+            <div class="footer-contact mb-4">
+              <a
+                href="mailto:james21.khiisa@gmail.com"
+                class="text-decoration-none text-light me-3"
+              >
+                <i class="fas fa-envelope me-2 text-info"></i
+                >james21.khiisa@gmail.com
+              </a>
+              <a
+                href="tel:+256760211221"
+                class="text-decoration-none text-light"
+              >
+                <i class="fas fa-phone-alt me-2 text-info"></i>+256 760 211 221
+              </a>
+            </div>
+
+            <p class="small mb-0">
+              &copy; {% now "Y" %} Allan James. All rights reserved.
+            </p>
+            <p class="small mt-2">
+              Built with <i class="fas fa-heart text-danger"></i> and
+              <i class="fab fa-python text-info"></i> +
+              <i class="fab fa-js-square text-warning"></i>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button
+      type="button"
+      class="btn btn-primary btn-floating btn-lg rounded-circle position-fixed bottom-0 end-0 m-4 d-none"
+      id="btn-back-to-top"
+      aria-label="Back to top"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <script>
+      // Initialize tooltips
+      document.addEventListener("DOMContentLoaded", function () {
+        // Tooltips
+        const tooltipTriggerList = [].slice.call(
+          document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        );
+        tooltipTriggerList.map(
+          (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+        );
+
+        // Back to top button
+        const backToTopButton = document.getElementById("btn-back-to-top");
+
+        window.addEventListener("scroll", () => {
+          if (window.pageYOffset > 300) {
+            backToTopButton.classList.remove("d-none");
+            backToTopButton.classList.add(
+              "animate__animated",
+              "animate__fadeIn"
+            );
+          } else {
+            backToTopButton.classList.add("d-none");
+          }
+        });
+
+        backToTopButton.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.querySelector(".navbar");
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 50) {
+            navbar.classList.add("navbar-scrolled", "shadow-sm");
+          } else {
+            navbar.classList.remove("navbar-scrolled", "shadow-sm");
+          }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
+
+    {% block extra_js %}
+    <script>
+      // Initialize tooltips
+      document.addEventListener("DOMContentLoaded", function () {
+        // Tooltips
+        const tooltipTriggerList = [].slice.call(
+          document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        );
+        tooltipTriggerList.map(
+          (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+        );
+
+        // Back to top button
+        const backToTopButton = document.getElementById("btn-back-to-top");
+
+        window.addEventListener("scroll", () => {
+          if (window.pageYOffset > 300) {
+            backToTopButton.classList.remove("d-none");
+            backToTopButton.classList.add(
+              "animate__animated",
+              "animate__fadeIn"
+            );
+          } else {
+            backToTopButton.classList.add("d-none");
+          }
+        });
+
+        backToTopButton.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.querySelector(".navbar");
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 50) {
+            navbar.classList.add("navbar-scrolled", "shadow-sm");
+          } else {
+            navbar.classList.remove("navbar-scrolled", "shadow-sm");
+          }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
+    {% endblock %}
+  </body>
+</html>

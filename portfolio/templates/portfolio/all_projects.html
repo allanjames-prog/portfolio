@@ -1,0 +1,260 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}All Projects | Allan James{% endblock %}
+
+{% block extra_css %}
+<style>
+  /* Project Filter Styles */
+  .project-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .filter-btn {
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--accent-color);
+    background: transparent;
+    color: var(--accent-color);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--accent-color);
+    color: var(--bg-dark);
+    transform: translateY(-2px);
+  }
+  
+  /* Project Card Enhancements */
+  .project-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+  }
+  
+  .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(100, 255, 218, 0.15);
+    border-color: rgba(100, 255, 218, 0.3);
+  }
+  
+  .project-img-container {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .project-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .project-card:hover .project-img-container img {
+    transform: scale(1.05);
+  }
+  
+  .project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 25, 47, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .project-card:hover .project-overlay {
+    opacity: 1;
+  }
+  
+  .project-overlay .btn {
+    margin: 0 0.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+  }
+  
+  .project-card:hover .project-overlay .btn {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(var(--i) * 0.1s);
+  }
+  
+  .project-badge {
+    background: rgba(100, 255, 218, 0.1);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    font-weight: 500;
+  }
+  
+  /* Empty State */
+  .empty-state {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .empty-state-icon {
+    font-size: 5rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="all-projects-section py-6 bg-dark-2">
+  <div class="container">
+    <div class="section-header text-center mb-6">
+      <span class="section-subtitle text-info">My Work</span>
+      <h1 class="section-title display-4 fw-bold text-white">
+        Project <span class="text-info">Portfolio</span>
+      </h1>
+      <div class="divider mx-auto bg-info"></div>
+      <p class="lead text-light mt-3 max-w-3xl mx-auto">
+        Here's a collection of my featured projects. Each one represents a unique challenge and learning opportunity.
+      </p>
+    </div>
+
+    <!-- Project Filter -->
+    <div class="project-filter" id="projectFilter">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="web">Web Development</button>
+      <button class="filter-btn" data-filter="python">Python/Django</button>
+      <button class="filter-btn" data-filter="javascript">JavaScript</button>
+      <button class="filter-btn" data-filter="physics">Physics Related</button>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="row g-4" id="projectsContainer">
+      {% for project in projects %}
+      <div class="col-md-6 col-lg-4 project-item" 
+           data-category="{% for tech in project.technologies.split %}{{ tech|lower }} {% endfor %}">
+        <div class="project-card h-100 bg-dark-3 rounded-4 overflow-hidden">
+          <div class="project-img-container">
+            <img src="{{ project.image.url }}" class="img-fluid" alt="{{ project.title }}">
+            <div class="project-overlay">
+              <a href="{{ project.github_link }}" class="btn btn-sm btn-outline-info" target="_blank" style="--i: 1;">
+                <i class="fab fa-github me-1"></i> Code
+              </a>
+              {% if project.live_link %}
+              <a href="{{ project.live_link }}" class="btn btn-sm btn-outline-light" target="_blank" style="--i: 2;">
+                <i class="fas fa-external-link-alt me-1"></i> Live
+              </a>
+              {% endif %}
+              <a href="{% url 'project_detail' project.id %}" class="btn btn-sm btn-info" style="--i: 3;">
+                <i class="fas fa-eye me-1"></i> Details
+              </a>
+            </div>
+          </div>
+          <div class="p-4 d-flex flex-column h-100">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h3 class="text-white mb-0">{{ project.title }}</h3>
+              <span class="badge bg-info bg-opacity-10 text-info">{{ project.year|default:"2023" }}</span>
+            </div>
+            <p class="text-light flex-grow-1">{{ project.description|truncatewords:20 }}</p>
+            <div class="project-tech mt-3">
+              {% for tech in project.technologies.split %}
+              <span class="badge project-badge me-1 mb-1">{{ tech }}</span>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-12">
+        <div class="empty-state text-center py-5">
+          <div class="empty-state-icon">
+            <i class="fas fa-folder-open"></i>
+          </div>
+          <h3 class="text-muted mb-3">No Projects Available Yet</h3>
+          <p class="text-light lead mb-4">I'm currently working on some exciting projects. Check back soon!</p>
+          <a href="{% url 'contact' %}" class="btn btn-info">
+            <i class="fas fa-paper-plane me-2"></i> Get in Touch
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Project Counter -->
+    <div class="text-center mt-5 pt-3">
+      <p class="text-light mb-0">
+        Showing <span id="projectCounter" class="text-info fw-bold">{{ projects|length }}</span> 
+        project{{ projects|pluralize }} out of {{ projects|length }} total
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Project Filter Functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+    const projectCounter = document.getElementById('projectCounter');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        const filterValue = button.getAttribute('data-filter');
+        let visibleCount = 0;
+        
+        // Filter projects
+        projectItems.forEach(item => {
+          if (filterValue === 'all' || item.getAttribute('data-category').includes(filterValue)) {
+            item.style.display = 'block';
+            visibleCount++;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+        
+        // Update counter
+        projectCounter.textContent = visibleCount;
+        
+        // Animate items
+        anime({
+          targets: '.project-item[style="display: block;"]',
+          opacity: [0, 1],
+          translateY: [20, 0],
+          duration: 600,
+          easing: 'easeOutQuad',
+          delay: anime.stagger(100)
+        });
+      });
+    });
+    
+    // Initialize project items with animation
+    anime({
+      targets: '.project-item',
+      opacity: [0, 1],
+      translateY: [20, 0],
+      duration: 800,
+      easing: 'easeOutQuad',
+      delay: anime.stagger(100)
+    });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,322 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Me | Allan James{% endblock %}
+
+{% block extra_css %}
+<style>
+  /* Contact Section Styles */
+  .contact-section {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .contact-card {
+    background: rgba(17, 34, 64, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+  }
+  
+  .contact-card:hover {
+    border-color: rgba(100, 255, 218, 0.4);
+    box-shadow: 0 10px 30px rgba(100, 255, 218, 0.1);
+  }
+  
+  /* Form Styles */
+  .form-control {
+    background-color: rgba(10, 25, 47, 0.7) !important;
+    border: 1px solid #495670 !important;
+    color: #ccd6f6 !important;
+    transition: all 0.3s ease;
+    padding: 0.75rem 1rem;
+  }
+  
+  .form-control:focus {
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 0.25rem rgba(100, 255, 218, 0.25);
+    background-color: rgba(10, 25, 47, 0.9) !important;
+  }
+  
+  .form-label {
+    color: var(--text-lighter);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  
+  .invalid-feedback {
+    color: #ff6b6b;
+  }
+  
+  .was-validated .form-control:invalid {
+    border-color: #ff6b6b !important;
+  }
+  
+  .was-validated .form-control:invalid:focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 107, 0.25);
+  }
+  
+  /* Contact Methods */
+  .contact-methods {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  
+  .contact-method {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    background: rgba(100, 255, 218, 0.05);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .contact-method:hover {
+    transform: translateY(-5px);
+    background: rgba(100, 255, 218, 0.1);
+    border-color: var(--accent-color);
+  }
+  
+  .contact-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(100, 255, 218, 0.1);
+    border-radius: 50%;
+    margin-right: 1.5rem;
+    color: var(--accent-color);
+    font-size: 1.25rem;
+  }
+  
+  .contact-info h4 {
+    color: var(--text-lighter);
+    margin-bottom: 0.25rem;
+  }
+  
+  .contact-info a, .contact-info p {
+    color: var(--text-light);
+    margin-bottom: 0;
+    transition: color 0.3s ease;
+  }
+  
+  .contact-info a:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+  }
+  
+  /* Success Message */
+  .success-message {
+    display: none;
+    padding: 2rem;
+    background: rgba(100, 255, 218, 0.1);
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  
+  .success-message.show {
+    display: block;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="contact-section py-6 bg-dark-2">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-xl-8">
+        <div class="section-header text-center mb-6">
+          <span class="section-subtitle text-info">Get In Touch</span>
+          <h1 class="section-title display-4 fw-bold text-white">
+            Contact <span class="text-info">Me</span>
+          </h1>
+          <div class="divider mx-auto bg-info"></div>
+          <p class="lead text-light mt-3">
+            Have a project in mind or want to discuss opportunities? Feel free to reach out!
+          </p>
+        </div>
+
+        <!-- Success Message (hidden by default) -->
+        <div id="successMessage" class="success-message text-center {% if success %}show{% endif %}">
+          <i class="fas fa-check-circle text-info fa-3x mb-3"></i>
+          <h3 class="text-white mb-2">Message Sent Successfully!</h3>
+          <p class="text-light mb-0">Thank you for reaching out. I'll get back to you as soon as possible.</p>
+        </div>
+
+        <div class="contact-card overflow-hidden">
+          <div class="card-body p-4 p-md-5">
+            <form method="post" class="needs-validation" novalidate id="contactForm">
+              {% csrf_token %}
+              
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name" class="form-label">Your Name *</label>
+                    <input type="text" class="form-control" 
+                          id="name" name="name" required
+                          placeholder="Enter your name">
+                    <div class="invalid-feedback">
+                      Please provide your name.
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="email" class="form-label">Email Address *</label>
+                    <input type="email" class="form-control" 
+                          id="email" name="email" required
+                          placeholder="Enter your email">
+                    <div class="invalid-feedback">
+                      Please provide a valid email address.
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-12">
+                  <div class="form-group">
+                    <label for="subject" class="form-label">Subject *</label>
+                    <input type="text" class="form-control" 
+                          id="subject" name="subject" required
+                          placeholder="What's this about?">
+                    <div class="invalid-feedback">
+                      Please provide a subject for your message.
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-12">
+                  <div class="form-group">
+                    <label for="message" class="form-label">Your Message *</label>
+                    <textarea class="form-control" 
+                              id="message" name="message" rows="6" required
+                              placeholder="Tell me about your project or inquiry"></textarea>
+                    <div class="invalid-feedback">
+                      Please enter your message.
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-12 text-center mt-4">
+                  <button class="btn btn-info btn-lg px-5 py-3" type="submit" id="submitBtn">
+                    <span id="submitText">
+                      <i class="fas fa-paper-plane me-2"></i> Send Message
+                    </span>
+                    <span id="submitSpinner" class="spinner-border spinner-border-sm d-none" role="status"></span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Alternative Contact Methods -->
+        <div class="text-center mt-6">
+          <h3 class="text-white mb-4">Other Ways to Connect</h3>
+          
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-info">
+                <h4>Email Me</h4>
+                <a href="mailto:james21.khiisa@gmail.com">james21.khiisa@gmail.com</a>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="contact-info">
+                <h4>Call Me</h4>
+                <a href="tel:+256760211221">+256 760 211 221</a>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </div>
+              <div class="contact-info">
+                <h4>LinkedIn</h4>
+                <a href="https://www.linkedin.com/in/allan-james-09963a249/" target="_blank">allan-james-09963a249</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Form validation
+  (function () {
+    'use strict'
+    
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const submitText = document.getElementById('submitText');
+    const submitSpinner = document.getElementById('submitSpinner');
+    
+    form.addEventListener('submit', function(event) {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      } else {
+        // Show loading state
+        submitText.textContent = 'Sending...';
+        submitSpinner.classList.remove('d-none');
+        submitBtn.disabled = true;
+      }
+      
+      form.classList.add('was-validated');
+    }, false);
+    
+    // Reset form if success message is shown
+    {% if success %}
+      form.reset();
+      form.classList.remove('was-validated');
+    {% endif %}
+  })();
+  
+  // Animate form elements on load
+  anime({
+    targets: '.form-group',
+    opacity: [0, 1],
+    translateY: [20, 0],
+    duration: 800,
+    easing: 'easeOutQuad',
+    delay: anime.stagger(100)
+  });
+  
+  // Animate contact methods
+  anime({
+    targets: '.contact-method',
+    opacity: [0, 1],
+    translateY: [20, 0],
+    duration: 800,
+    easing: 'easeOutQuad',
+    delay: anime.stagger(100)
+  });
+});
+</script>
+{% endblock %}
