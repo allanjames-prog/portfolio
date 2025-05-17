@@ -385,8 +385,7 @@
               <div class="timeline-badge bg-info"></div>
               <div class="timeline-content bg-dark-2 p-4 rounded-4">
                 <div class="timeline-date text-info mb-2">
-                  {{ exp.start_date|date:"M Y" }} - {% if exp.current
-                  %}Present{% else %}{{ exp.end_date|date:"M Y" }}{% endif %}
+                  {{ exp.start_date|date:"M Y" }} - {% if exp.current %}Present{% else %}{{ exp.end_date|date:"M Y" }}{% endif %}
                 </div>
                 <h4 class="text-white">{{ exp.position }}</h4>
                 <h5 class="text-light">{{ exp.company }}</h5>
@@ -410,8 +409,7 @@
               <div class="timeline-badge bg-info"></div>
               <div class="timeline-content bg-dark-2 p-4 rounded-4">
                 <div class="timeline-date text-info mb-2">
-                  {{ edu.start_date|date:"M Y" }} - {{ edu.end_date|date:"M Y"
-                  }}
+                  {{ edu.start_date|date:"M Y" }} - {{ edu.end_date|date:"M Y" }}
                 </div>
                 <h4 class="text-white">{{ edu.degree }}</h4>
                 <h5 class="text-light">{{ edu.institution }}</h5>
