@@ -55,31 +55,26 @@ def contact(request):
     return render(request, 'portfolio/contact.html')
 
 
-
 from django.shortcuts import render
 from portfolio.models import Skill
 
 def skills_view(request):
-    # Organize by category with proper mappings
     categories = {
-        'Programming Languages': {
+        'Programming': {
             'icon': 'fas fa-code',
-            'skills': Skill.objects.filter(category='PROGRAMMING')  # Fixed typo
+            'skills': Skill.objects.filter(category='PROGRAMMING')
         },
-        'Web Development': {
+        'Web': {
             'icon': 'fas fa-laptop-code',
             'skills': Skill.objects.filter(category='WEB')
         },
         'Databases & Tools': {
             'icon': 'fas fa-database',
-            'skills': Skill.objects.filter(category='DATABASE') | Skill.objects.filter(category='TOOLS')
+            'skills': Skill.objects.filter(category__in=['DATABASE', 'TOOLS'])
         },
-        'Other Skills': {
+        'Other': {
             'icon': 'fas fa-cogs',
             'skills': Skill.objects.filter(category='OTHER')
         }
     }
-    
-    return render(request, 'portfolio/skills.html', {
-        'categories': categories
-    })
+    return render(request, 'portfolio/skills.html', {'categories': categories})

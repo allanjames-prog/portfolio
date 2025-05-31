@@ -428,7 +428,6 @@
     </div>
   </div>
 </section>
-
 <!-- Skills Section -->
 <section id="skills" class="py-6 bg-dark-2">
   <div class="container">
@@ -441,129 +440,115 @@
     </div>
 
     <div class="row g-4">
+      <!-- Programming Languages Category -->
       <div class="col-md-6">
         <div class="skill-category bg-dark-3 p-4 rounded-4 mb-4">
           <h3 class="text-white mb-4 d-flex align-items-center">
-            <i class="fas fa-code text-info me-3"></i> Programming Languages
+            <i class="{{ categories.Programming_Languages.icon }} text-info me-3"></i> Programming Languages
           </h3>
           <div class="row g-3">
-            {% for skill in skills|slice:":4" %}
-            <div class="col-6">
-              <div class="skill-item">
-                <div class="d-flex justify-content-between mb-2">
-                  <span class="text-white">{{ skill.name }}</span>
-                  <span class="text-info">{{ skill.proficiency }}%</span>
-                </div>
-                <div class="progress bg-dark">
-                  <div
-                    class="progress-bar bg-info"
-                    role="progressbar"
-                    style="width: {{ skill.proficiency }}%"
-                    aria-valuenow="{{ skill.proficiency }}"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
+            {% if categories.Programming_Languages.skills %}
+              {% for skill in categories.Programming_Languages.skills %}
+              <div class="col-6">
+                <div class="skill-item">
+                  <div class="d-flex justify-content-between mb-2">
+                    <span class="text-white">{{ skill.name }}</span>
+                    <span class="text-info">{{ skill.proficiency }}%</span>
+                  </div>
+                  <div class="progress bg-dark">
+                    <div class="progress-bar bg-info" 
+                         role="progressbar" 
+                         style="width: {{ skill.proficiency }}%"
+                         aria-valuenow="{{ skill.proficiency }}" 
+                         aria-valuemin="0" 
+                         aria-valuemax="100"></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            {% endfor %}
+              {% endfor %}
+            {% else %}
+              <div class="col-12">
+                <p class="text-muted">No programming languages added yet</p>
+              </div>
+            {% endif %}
           </div>
         </div>
       </div>
 
+      <!-- Web Development Category -->
       <div class="col-md-6">
         <div class="skill-category bg-dark-3 p-4 rounded-4 mb-4">
           <h3 class="text-white mb-4 d-flex align-items-center">
-            <i class="fas fa-laptop-code text-info me-3"></i> Web Development
+            <i class="{{ categories.Web_Development.icon }} text-info me-3"></i> Web Development
           </h3>
           <div class="row g-3">
-            {% for skill in skills|slice:"4:8" %}
-            <div class="col-6">
-              <div class="skill-item">
-                <div class="d-flex justify-content-between mb-2">
-                  <span class="text-white">{{ skill.name }}</span>
-                  <span class="text-info">{{ skill.proficiency }}%</span>
-                </div>
-                <div class="progress bg-dark">
-                  <div
-                    class="progress-bar bg-info"
-                    role="progressbar"
-                    style="width: {{ skill.proficiency }}%"
-                    aria-valuenow="{{ skill.proficiency }}"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
+            {% if categories.Web_Development.skills %}
+              {% for skill in categories.Web_Development.skills %}
+              <div class="col-6">
+                <div class="skill-item">
+                  <!-- Same structure as above -->
                 </div>
               </div>
-            </div>
-            {% endfor %}
+              {% endfor %}
+            {% else %}
+              <div class="col-12">
+                <p class="text-muted">No web development skills added yet</p>
+              </div>
+            {% endif %}
           </div>
         </div>
       </div>
 
+      <!-- Databases & Tools Category -->
       <div class="col-md-6">
         <div class="skill-category bg-dark-3 p-4 rounded-4">
           <h3 class="text-white mb-4 d-flex align-items-center">
-            <i class="fas fa-database text-info me-3"></i> Databases & Tools
+            <i class="{{ categories.Databases_Tools.icon }} text-info me-3"></i> Databases & Tools
           </h3>
           <div class="row g-3">
-            {% for skill in skills|slice:"8:12" %}
-            <div class="col-6">
-              <div class="skill-item">
-                <div class="d-flex justify-content-between mb-2">
-                  <span class="text-white">{{ skill.name }}</span>
-                  <span class="text-info">{{ skill.proficiency }}%</span>
-                </div>
-                <div class="progress bg-dark">
-                  <div
-                    class="progress-bar bg-info"
-                    role="progressbar"
-                    style="width: {{ skill.proficiency }}%"
-                    aria-valuenow="{{ skill.proficiency }}"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
+            {% if categories.Databases_Tools.skills %}
+              {% for skill in categories.Databases_Tools.skills %}
+              <div class="col-6">
+                <div class="skill-item">
+                  <!-- Same structure as above -->
                 </div>
               </div>
-            </div>
-            {% endfor %}
+              {% endfor %}
+            {% else %}
+              <div class="col-12">
+                <p class="text-muted">No database/tool skills added yet</p>
+              </div>
+            {% endif %}
           </div>
         </div>
       </div>
 
+      <!-- Other Skills Category -->
       <div class="col-md-6">
         <div class="skill-category bg-dark-3 p-4 rounded-4">
           <h3 class="text-white mb-4 d-flex align-items-center">
-            <i class="fas fa-cogs text-info me-3"></i> Other Skills
+            <i class="{{ categories.Other_Skills.icon }} text-info me-3"></i> Other Skills
           </h3>
           <div class="row g-3">
-            {% for skill in skills|slice:"12:16" %}
-            <div class="col-6">
-              <div class="skill-item">
-                <div class="d-flex justify-content-between mb-2">
-                  <span class="text-white">{{ skill.name }}</span>
-                  <span class="text-info">{{ skill.proficiency }}%</span>
-                </div>
-                <div class="progress bg-dark">
-                  <div
-                    class="progress-bar bg-info"
-                    role="progressbar"
-                    style="width: {{ skill.proficiency }}%"
-                    aria-valuenow="{{ skill.proficiency }}"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
+            {% if categories.Other_Skills.skills %}
+              {% for skill in categories.Other_Skills.skills %}
+              <div class="col-6">
+                <div class="skill-item">
+                  <!-- Same structure as above -->
                 </div>
               </div>
-            </div>
-            {% endfor %}
+              {% endfor %}
+            {% else %}
+              <div class="col-12">
+                <p class="text-muted">No other skills added yet</p>
+              </div>
+            {% endif %}
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 <!-- Testimonials Section -->
 <section class="py-6 bg-dark-3">
   <div class="container">
