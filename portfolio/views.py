@@ -2,24 +2,45 @@
 from django.shortcuts import render
 from .models import Project, Skill, Education, Experience, ContactMessage
 from django.core.mail import send_mail
-from pprint import pprint
+from django.conf import settings
+from django.shortcuts import get_object_or_404
 
 def portfolio_home(request):
     projects = Project.objects.filter(featured=True)[:6]
-    skills = Skill.objects.all().order_by('-proficiency')
+    all_skills = Skill.objects.all().order_by('-display_order')
     education = Education.objects.all().order_by('-end_date')
     experience = Experience.objects.all().order_by('-start_date')
-    
+
+    categories = {
+        'Programming Languages': {
+            'icon': 'fas fa-code',
+            'skills': all_skills.filter(category='PROGRAMMING')
+        },
+        'Web Development': {
+            'icon': 'fas fa-laptop-code',
+            'skills': all_skills.filter(category='WEB')
+        },
+        'Databases & Tools': {
+            'icon': 'fas fa-database',
+            'skills': all_skills.filter(category__in=['DATABASE', 'TOOLS'])
+        },
+        'Other Skills': {
+            'icon': 'fas fa-cogs',
+            'skills': all_skills.filter(category='OTHER')
+        }
+    }
+
     context = {
         'projects': projects,
-        'skills': skills,
+        'categories': categories,
         'education': education,
         'experience': experience,
     }
     return render(request, 'portfolio/home.html', context)
 
+
 def project_detail(request, pk):
-    project = Project.objects.get(pk=pk)
+    project = get_object_or_404(Project, pk=pk)
     return render(request, 'portfolio/project_detail.html', {'project': project})
 
 def all_projects(request):
@@ -55,26 +76,38 @@ def contact(request):
     return render(request, 'portfolio/contact.html')
 
 
-from django.shortcuts import render
-from portfolio.models import Skill
-
 def skills_view(request):
+    print("Skills view is being called!")  # Add this at start of skills_view
+    # Get all skills ordered properly once
+    all_skills = Skill.objects.all().order_by('-display_order')
+    
     categories = {
-        'Programming': {
+        'Programming_Languages': {
             'icon': 'fas fa-code',
-            'skills': Skill.objects.filter(category='PROGRAMMING')
+            'skills': all_skills.filter(category='PROGRAMMING')
         },
-        'Web': {
+        'Web_Development': {
             'icon': 'fas fa-laptop-code',
-            'skills': Skill.objects.filter(category='WEB')
+            'skills': all_skills.filter(category='WEB')
         },
-        'Databases & Tools': {
+        'Databases_Tools': {
             'icon': 'fas fa-database',
-            'skills': Skill.objects.filter(category__in=['DATABASE', 'TOOLS'])
+            'skills': all_skills.filter(category__in=['DATABASE', 'TOOLS'])
         },
-        'Other': {
+        'Other_Skills': {
             'icon': 'fas fa-cogs',
-            'skills': Skill.objects.filter(category='OTHER')
+            'skills': all_skills.filter(category='OTHER')
         }
     }
-    return render(request, 'portfolio/skills.html', {'categories': categories})
+
+
+    
+    # Debug output
+    if settings.DEBUG:
+        for cat_name, cat_data in categories.items():
+            print(f"{cat_name}: {list(cat_data['skills'].values_list('name', flat=True))}")
+    
+    return render(request, 'portfolio/skills.html', {
+        'categories': categories,
+        'debug_mode': settings.DEBUG
+    })

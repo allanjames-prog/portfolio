@@ -428,6 +428,10 @@
     </div>
   </div>
 </section>
+
+
+
+
 <!-- Skills Section -->
 <section id="skills" class="py-6 bg-dark-2">
   <div class="container">
@@ -440,213 +444,86 @@
     </div>
 
     <div class="row g-4">
-      <!-- Programming Languages Category -->
-      <div class="col-md-6">
-        <div class="skill-category bg-dark-3 p-4 rounded-4 mb-4">
-          <h3 class="text-white mb-4 d-flex align-items-center">
-            <i class="{{ categories.Programming_Languages.icon }} text-info me-3"></i> Programming Languages
-          </h3>
-          <div class="row g-3">
-            {% if categories.Programming_Languages.skills %}
-              {% for skill in categories.Programming_Languages.skills %}
-              <div class="col-6">
-                <div class="skill-item">
-                  <div class="d-flex justify-content-between mb-2">
-                    <span class="text-white">{{ skill.name }}</span>
-                    <span class="text-info">{{ skill.proficiency }}%</span>
-                  </div>
-                  <div class="progress bg-dark">
-                    <div class="progress-bar bg-info" 
-                         role="progressbar" 
-                         style="width: {{ skill.proficiency }}%"
-                         aria-valuenow="{{ skill.proficiency }}" 
-                         aria-valuemin="0" 
-                         aria-valuemax="100"></div>
-                  </div>
+      {% for category, data in categories.items %}
+      <div class="col-lg-6">
+        <div class="skill-category-card bg-dark-3 p-4 rounded-4 h-100 border border-info border-opacity-25 shadow-lg">
+          <div class="d-flex align-items-center mb-4">
+            <div class="icon-box bg-info bg-opacity-10 text-info rounded-circle me-3">
+              <i class="{{ data.icon }}"></i>
+            </div>
+            <h3 class="text-white mb-0">{{ category }}</h3>
+          </div>
+          
+          <div class="skills-container">
+            {% for skill in data.skills %}
+            <div class="skill-item mb-3 animate__animated animate__fadeInUp" style="animation-delay: {{ forloop.counter0|divisibleby:2|yesno:'0.1s,0.2s' }};">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-white fw-medium">{{ skill.name }}</span>
+                <span class="text-info">{{ skill.proficiency }}%</span>
+              </div>
+              <div class="progress bg-dark" style="height: 8px;">
+                <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" 
+                     role="progressbar" 
+                     style="width: {{ skill.proficiency }}%"
+                     aria-valuenow="{{ skill.proficiency }}" 
+                     aria-valuemin="0" 
+                     aria-valuemax="100">
                 </div>
               </div>
-              {% endfor %}
-            {% else %}
-              <div class="col-12">
-                <p class="text-muted">No programming languages added yet</p>
-              </div>
-            {% endif %}
+            </div>
+            {% empty %}
+            <div class="text-center py-4">
+              <p class="text-muted">No skills in this category yet</p>
+            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
-
-      <!-- Web Development Category -->
-      <div class="col-md-6">
-        <div class="skill-category bg-dark-3 p-4 rounded-4 mb-4">
-          <h3 class="text-white mb-4 d-flex align-items-center">
-            <i class="{{ categories.Web_Development.icon }} text-info me-3"></i> Web Development
-          </h3>
-          <div class="row g-3">
-            {% if categories.Web_Development.skills %}
-              {% for skill in categories.Web_Development.skills %}
-              <div class="col-6">
-                <div class="skill-item">
-                  <!-- Same structure as above -->
-                </div>
-              </div>
-              {% endfor %}
-            {% else %}
-              <div class="col-12">
-                <p class="text-muted">No web development skills added yet</p>
-              </div>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-
-      <!-- Databases & Tools Category -->
-      <div class="col-md-6">
-        <div class="skill-category bg-dark-3 p-4 rounded-4">
-          <h3 class="text-white mb-4 d-flex align-items-center">
-            <i class="{{ categories.Databases_Tools.icon }} text-info me-3"></i> Databases & Tools
-          </h3>
-          <div class="row g-3">
-            {% if categories.Databases_Tools.skills %}
-              {% for skill in categories.Databases_Tools.skills %}
-              <div class="col-6">
-                <div class="skill-item">
-                  <!-- Same structure as above -->
-                </div>
-              </div>
-              {% endfor %}
-            {% else %}
-              <div class="col-12">
-                <p class="text-muted">No database/tool skills added yet</p>
-              </div>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-
-      <!-- Other Skills Category -->
-      <div class="col-md-6">
-        <div class="skill-category bg-dark-3 p-4 rounded-4">
-          <h3 class="text-white mb-4 d-flex align-items-center">
-            <i class="{{ categories.Other_Skills.icon }} text-info me-3"></i> Other Skills
-          </h3>
-          <div class="row g-3">
-            {% if categories.Other_Skills.skills %}
-              {% for skill in categories.Other_Skills.skills %}
-              <div class="col-6">
-                <div class="skill-item">
-                  <!-- Same structure as above -->
-                </div>
-              </div>
-              {% endfor %}
-            {% else %}
-              <div class="col-12">
-                <p class="text-muted">No other skills added yet</p>
-              </div>
-            {% endif %}
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
-<!-- Testimonials Section -->
-<section class="py-6 bg-dark-3">
-  <div class="container">
-    <div class="section-header text-center mb-6">
-      <span class="section-subtitle text-info">Client Feedback</span>
-      <h2 class="section-title display-4 fw-bold text-white">
-        What People <span class="text-info">Say</span>
-      </h2>
-      <div class="divider mx-auto bg-info"></div>
-    </div>
 
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="testimonial-card bg-dark-2 p-4 rounded-4 h-100">
-          <div class="rating mb-3 text-warning">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p class="text-light mb-4">
-            "Allan delivered our project ahead of schedule with exceptional
-            quality. His problem-solving skills are outstanding."
-          </p>
-          <div class="client-info d-flex align-items-center">
-            <img
-              src="{% static 'images/client1.jpg' %}"
-              class="rounded-circle me-3"
-              width="50"
-              alt="Client"
-            />
-            <div>
-              <h5 class="text-white mb-0">Sarah Johnson</h5>
-              <small class="text-info">CEO, TechSolutions</small>
-            </div>
-          </div>
-        </div>
-      </div>
+<style>
+  .skill-category-card {
+    transition: all 0.3s ease;
+    border-top: 3px solid rgba(23, 162, 184, 0.3);
+  }
+  
+  .skill-category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(23, 162, 184, 0.1);
+    border-top: 3px solid var(--info);
+  }
+  
+  .icon-box {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+  
+  .progress-bar {
+    position: relative;
+    overflow: visible;
+  }
+  
+  .progress-bar::after {
+    content: '';
+    position: absolute;
+    right: -5px;
+    top: -3px;
+    width: 10px;
+    height: 14px;
+    background-color: var(--info);
+    border-radius: 3px;
+    opacity: 0.8;
+  }
+</style>
 
-      <div class="col-md-4">
-        <div class="testimonial-card bg-dark-2 p-4 rounded-4 h-100">
-          <div class="rating mb-3 text-warning">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <p class="text-light mb-4">
-            "Working with Allan was a pleasure. He understood our requirements
-            perfectly and implemented them flawlessly."
-          </p>
-          <div class="client-info d-flex align-items-center">
-            <img
-              src="{% static 'images/client2.jpg' %}"
-              class="rounded-circle me-3"
-              width="50"
-              alt="Client"
-            />
-            <div>
-              <h5 class="text-white mb-0">Michael Brown</h5>
-              <small class="text-info">CTO, InnovateApps</small>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="col-md-4">
-        <div class="testimonial-card bg-dark-2 p-4 rounded-4 h-100">
-          <div class="rating mb-3 text-warning">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p class="text-light mb-4">
-            "Allan's combination of technical skills and scientific thinking
-            brought unique solutions to our complex problems."
-          </p>
-          <div class="client-info d-flex align-items-center">
-            <img
-              src="{% static 'images/client3.jpg' %}"
-              class="rounded-circle me-3"
-              width="50"
-              alt="Client"
-            />
-            <div>
-              <h5 class="text-white mb-0">David Wilson</h5>
-              <small class="text-info">Director, DataSci Corp</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- Contact CTA -->
 <section class="py-6 bg-info position-relative overflow-hidden">
