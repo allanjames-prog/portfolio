@@ -1,1 +1,6 @@
-myvenv
+cleanenv
+media/
+static/
+__pycache__/
+.env
+db.sqlite3
