@@ -5,7 +5,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('portfolio.urls')),  # This includes all your portfolio app URLs
+    path('', include('portfolio.urls')),  
 ]
 
 if settings.DEBUG:
