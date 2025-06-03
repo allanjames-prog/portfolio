@@ -24,6 +24,24 @@ DEBUG = (ENVIRONMENT == 'development')
 SECRET_KEY = env('SECRET_KEY', default=get_random_secret_key() if DEBUG else None)
 ENCRYPT_KEY = env('ENCRYPT_KEY')
 
+# Security (add anywhere, but typically near DEBUG/SECRET_KEY)
+if not DEBUG:
+    # HTTPS Settings
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    
+    # HSTS (Optional but recommended)
+    SECURE_HSTS_SECONDS = 30 * 24 * 60 * 60  # 30 days
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    
+    # Other protections
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    
+
 # ========================
 # Security Settings
 # ========================
@@ -113,17 +131,30 @@ else:
 # ========================
 # Authentication (allauth)
 # ========================
+# Authentication (allauth)
+# Authentication (allauth)
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+# Core redirects
 LOGIN_REDIRECT_URL = '/'
-ACCOUNT_LOGIN_METHODS = ['email']
-ACCOUNT_SIGNUP_FIELDS = ['email', 'username', 'password1', 'password2']
-ACCOUNT_USERNAME_BLACKLIST = ['admin', 'accounts', 'profile', 'category', 'post', 'inbox']
-SITE_ID = 1
+LOGOUT_REDIRECT_URL = '/'
 
+# Modern allauth configuration (replaces deprecated settings)
+ACCOUNT_LOGIN_METHODS = {'email'}  # Login with email only
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']  # Required fields
+ACCOUNT_UNIQUE_EMAIL = True  # Prevent duplicate emails
+ACCOUNT_SESSION_REMEMBER = True  # "Remember me" functionality
+ACCOUNT_EMAIL_VERIFICATION = 'optional'  # or 'mandatory'
+
+# Email configuration
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    DEFAULT_FROM_EMAIL = env('EMAIL_HOST_USER')
 # ========================
 # Remaining Default Config
 # ========================
