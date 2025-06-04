@@ -105,6 +105,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'defender',
+    'cloudinary',
+    'cloudinary_storage',
     
     # Local
     'portfolio.apps.PortfolioConfig',
@@ -201,3 +203,11 @@ USE_TZ = True
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+    'SECURE': True,
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
