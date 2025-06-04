@@ -1,12 +1,16 @@
 # models.py
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary_storage.storage import MediaCloudinaryStorage
 
 class Project(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     technologies = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='projects/')
+    image = models.ImageField(
+        upload_to='portfolio/projects/',
+        storage=MediaCloudinaryStorage()  # Force Cloudinary storage
+    )
     github_link = models.URLField(blank=True)
     live_link = models.URLField(blank=True)
     date_created = models.DateField(auto_now_add=True)
