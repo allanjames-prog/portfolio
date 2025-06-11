@@ -113,70 +113,45 @@
           <div class="skill-progress mb-4">
             <div class="d-flex justify-content-between mb-2">
               <span class="text-white">Python/Django</span>
-              <span class="text-info">90%</span>
-            </div>
-            <div class="progress bg-dark">
-              <div
-                class="progress-bar bg-info"
-                role="progressbar"
-                style="width: 90%"
-                aria-valuenow="90"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
             </div>
           </div>
 
           <div class="skill-progress mb-4">
             <div class="d-flex justify-content-between mb-2">
               <span class="text-white">JavaScript/React</span>
-              <span class="text-info">75%</span>
-            </div>
-            <div class="progress bg-dark">
-              <div
-                class="progress-bar bg-info"
-                role="progressbar"
-                style="width: 75%"
-                aria-valuenow="75"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
             </div>
           </div>
 
           <div class="skill-progress mb-4">
             <div class="d-flex justify-content-between mb-2">
               <span class="text-white">Database Design</span>
-              <span class="text-info">85%</span>
-            </div>
-            <div class="progress bg-dark">
-              <div
-                class="progress-bar bg-info"
-                role="progressbar"
-                style="width: 85%"
-                aria-valuenow="85"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
             </div>
           </div>
 
           <div class="skill-progress mb-4">
             <div class="d-flex justify-content-between mb-2">
               <span class="text-white">UI/UX Design</span>
-              <span class="text-info">70%</span>
-            </div>
-            <div class="progress bg-dark">
-              <div
-                class="progress-bar bg-info"
-                role="progressbar"
-                style="width: 70%"
-                aria-valuenow="70"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              ></div>
             </div>
           </div>
+
+          <div class="skill-progress mb-4">
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-white">Docker and Kubernetes</span>
+            </div>
+          </div>
+
+          <div class="skill-progress mb-4">
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-white">Micro services</span>
+            </div>
+          </div>
+
+          <div class="skill-progress mb-4">
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-white">Problem Solving</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -307,12 +282,7 @@
             <div
               class="project-overlay d-flex align-items-center justify-content-center"
             >
-              <a
-                href="{% url 'project_detail' project.id %}"
-                class="btn btn-info btn-sm rounded-pill px-3 me-2"
-              >
-                <i class="fas fa-eye me-1"></i> View
-              </a>
+              
               {% if project.live_link %}
               <a
                 href="{{ project.live_link }}"
@@ -459,17 +429,8 @@
             <div class="skill-item mb-3 animate__animated animate__fadeInUp" style="animation-delay: {{ forloop.counter0|divisibleby:2|yesno:'0.1s,0.2s' }};">
               <div class="d-flex justify-content-between mb-2">
                 <span class="text-white fw-medium">{{ skill.name }}</span>
-                <span class="text-info">{{ skill.proficiency }}%</span>
               </div>
-              <div class="progress bg-dark" style="height: 8px;">
-                <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" 
-                     role="progressbar" 
-                     style="width: {{ skill.proficiency }}%"
-                     aria-valuenow="{{ skill.proficiency }}" 
-                     aria-valuemin="0" 
-                     aria-valuemax="100">
-                </div>
-              </div>
+              
             </div>
             {% empty %}
             <div class="text-center py-4">
@@ -539,9 +500,6 @@
     <div class="d-flex justify-content-center gap-3 flex-wrap">
       <a href="{% url 'contact' %}" class="btn btn-dark btn-lg px-4 shadow-sm">
         <i class="fas fa-paper-plane me-2"></i> Get In Touch
-      </a>
-      <a href="tel:+256XXXXXXXXX" class="btn btn-outline-dark btn-lg px-4">
-        <i class="fas fa-phone-alt me-2"></i> Call Me
       </a>
     </div>
   </div>
